@@ -9,16 +9,27 @@ function showMenu(){
 }
 
 function slideLeft(){
-    slider.scrollLeft += -firstSlideWidth/3;
+    if(window.innerWidth <= 768){
+        slider.scrollLeft += -firstSlideWidth/1;    
+    } else {
+        slider.scrollLeft += -firstSlideWidth/3;
+    }
     if (slider.scrollLeft <= 0) {
         slider.scrollLeft = slider.scrollWidth;
     }
 }
 
 function slideRight(){
-    slider.scrollLeft += firstSlideWidth/3;
-    if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
-        slider.scrollLeft = 0;
+    if(window.innerWidth <= 768){
+        slider.scrollLeft += firstSlideWidth/1;
+        if (slider.scrollLeft >= slider.clientWidth * 4) {
+            slider.scrollLeft = 0;
+        }    
+    } else {
+        slider.scrollLeft += firstSlideWidth/3;
+        if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
+            slider.scrollLeft = 0;
+        }
     }
 }
 
